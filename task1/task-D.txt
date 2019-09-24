@@ -1,0 +1,16 @@
+to accomplish given task:
+1. get cpu usage of pods       # kubectl top pods
+2. sort the cpu usage of pods  # kubectl top pods | sort -r -k2
+   -r - sort reverse, from highest to lowest
+   -t - sort 2nd column, in this case CPU usage
+  
+3. get the pod which uses cpu  # kubectl top pods | sort -r -k2 | head -n -2
+   resource most
+4. save the result to output   # kubectl top pods | sort -r -k2 | head -n -2 > report.txt
+
+
+:)) not all lines have to be run, only last line to get the desired solution, 
+    i tried to explain each step
+
+ 
+ 

@@ -1,0 +1,6 @@
+--> sort by name
+# kubectl get pv --sort-by=.metadata.name
+
+
+--> sort by capacity
+# kubectl get pv --sort-by=.spec.capacity

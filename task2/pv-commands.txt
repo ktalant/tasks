@@ -3,4 +3,4 @@
 
 
 --> sort by capacity
-# kubectl get pv --sort-by=.spec.capacity
+# kubectl get pv --sort-by=.spec.capacity.storage

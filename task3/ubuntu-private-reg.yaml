@@ -1,0 +1,24 @@
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  name: ubuntu-apache-rs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ubuntu-apache
+  template:
+    metadata:
+      labels:
+        app: ubuntu-apache
+    spec:
+      containers:
+      - image: ktalant/ubuntu-custom:v1
+        name: web-server
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        
+      imagePullSecrets:
+      - name: docker-registry
+

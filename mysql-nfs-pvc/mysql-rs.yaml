@@ -1,0 +1,40 @@
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  name: mysql-rs
+  labels:
+    volume: nfs
+    app: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-rs-pod
+  template:
+    metadata:
+      labels:
+        app: mysql-rs-pod
+    spec:
+      volumes:
+      - name: sql-volume
+        persistentVolumeClaim:
+          claimName: sql-pvc
+      containers:
+      - image: mysql:5.6
+        name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: talant12345
+        livenessProbe:
+          tcpSocket: 
+            port: 3306
+        ports:
+        - containerPort: 3306
+          protocol: TCP
+        volumeMounts:
+        - name: sql-volume
+          mountPath: /var/lib/mysql
+
+
+
+

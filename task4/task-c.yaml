@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    run: ubuntu-ds
+  name: ubuntu-ds
+spec:
+  selector:
+    matchLabels:
+      app: ubuntu-ds
+  template:
+    metadata:
+      labels:
+        app: ubuntu-ds
+    spec:
+      containers:
+      - image: ubuntu
+        name: ubuntu-ds
+        stdin: true
+        tty: true

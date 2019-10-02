@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx-dns
+  name: nginx-dns-service
+spec:
+  clusterIP: None
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: nginx-dns
+
+---
+
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  labels:
+    app: nginx-dns
+  name: nginx-dns
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-dns
+  template:
+    metadata:
+      labels:
+        app: nginx-dns
+    spec:
+      containers:
+      - image: nginx
+        name: nginx-dns
+        ports:
+        - containerPort: 80
+          protocol: TCP

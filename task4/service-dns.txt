@@ -1,0 +1,6 @@
+Name:   nginx-dns-service.default.svc.cluster.local
+Address: 10.28.1.30
+Name:   nginx-dns-service.default.svc.cluster.local
+Address: 10.28.0.30
+Name:   nginx-dns-service.default.svc.cluster.local
+Address: 10.28.0.31
